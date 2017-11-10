@@ -62,6 +62,7 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
     public View getView(int position, View convertView, ViewGroup parent) {
         // Check if there is an existing list item view (called convertView) that we can reuse,
         // otherwise, if convertView is null, then inflate a new list item layout.
+
         View listItemView = convertView;
         if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(
@@ -77,7 +78,6 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
         String formattedMagnitude = formatMagnitude(currentEarthquake.getmMagnitude());
         // Display the magnitude of the current earthquake in that TextView
         magnitudeView.setText(formattedMagnitude);
-
 
         // Set the proper background color on the magnitude circle.
         // Fetch the background from the TextView, which is a GradientDrawable.
@@ -197,7 +197,7 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
      * from a decimal magnitude value.
      */
     private String formatMagnitude(double magnitude) {
-        DecimalFormat magnitudeFormat = new DecimalFormat("0.0");
+        DecimalFormat magnitudeFormat = new DecimalFormat("0.00");
         return magnitudeFormat.format(magnitude);
     }
 
@@ -216,4 +216,5 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
         SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm a");
         return timeFormat.format(dateObject);
     }
+
 }
